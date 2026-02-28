@@ -33,7 +33,7 @@ import {
 import { Fetcher } from '@graphiql/toolkit'
 import { PermissionAction } from '@supabase/shared-types/out/constants'
 import { AlertTriangle, XIcon } from 'lucide-react'
-import { MouseEventHandler, useCallback, useEffect, useState } from 'react'
+import { MouseEventHandler, useCallback, useState } from 'react'
 
 import { LOCAL_STORAGE_KEYS } from 'common'
 import { useAsyncCheckPermissions } from 'hooks/misc/useCheckPermissions'
@@ -87,9 +87,7 @@ const GraphiQLInterface = ({ theme }: GraphiQLInterfaceProps) => {
   )
 
   const { setTheme } = useTheme()
-  useEffect(() => {
-    setTheme(theme)
-  }, [theme])
+  setTheme(theme)
 
   const PluginContent = pluginContext?.visiblePlugin?.content
 
