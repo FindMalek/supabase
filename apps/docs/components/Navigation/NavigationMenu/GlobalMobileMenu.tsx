@@ -3,7 +3,7 @@ import { X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Dispatch, Fragment, SetStateAction, useState } from 'react'
+import { Dispatch, Fragment, SetStateAction, useEffect, useRef } from 'react'
 import { useKey } from 'react-use'
 
 import { useIsLoggedIn, useIsUserLoading } from 'common'
@@ -111,11 +111,14 @@ const GlobalMobileMenu = ({ open, setOpen }: Props) => {
 
   const { navigationLogo } = getCustomContent(['navigation:logo'])
 
-  const [prevPathname, setPrevPathname] = useState(pathname)
-  if (prevPathname !== pathname) {
-    setPrevPathname(pathname)
-    setOpen(false)
-  }
+  const prevPathnameRef = useRef(pathname)
+
+  useEffect(() => {
+    if (prevPathnameRef.current !== pathname) {
+      prevPathnameRef.current = pathname
+      setOpen(false)
+    }
+  }, [pathname, setOpen])
 
   useKey('Escape', () => setOpen(false))
 

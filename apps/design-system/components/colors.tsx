@@ -16,11 +16,9 @@ const Example = ({
       return (
         <div className={cn(x, 'relative w-full h-12 border border-overlay rounded-full')}></div>
       )
-      break
 
     case 'border':
       return <div className={cn(x, 'relative w-full h-12 border-4 rounded-full')}></div>
-      break
 
     case 'text':
       return (
@@ -28,19 +26,16 @@ const Example = ({
           Postgres
         </span>
       )
-      break
 
     case 'colors':
       return (
         <div className={cn(x, 'relative w-full h-12 border border-overlay rounded-full')}></div>
       )
-      break
 
     case 'palletes':
       return (
         <div className={cn(x, 'relative w-full h-12 border border-overlay rounded-full')}></div>
       )
-      break
 
     default:
       break

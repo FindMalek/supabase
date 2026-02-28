@@ -355,7 +355,12 @@ function UserGridCell({ row, col, users, onSelectDeleteUser }: UserGridCellProps
           className="gap-x-2"
           onFocusCapture={(e) => e.stopPropagation()}
           onSelect={() => {
-            const value = col.id === 'providers' ? row.providers.join(', ') : formattedValue
+            const value =
+              col.id === 'providers'
+                ? Array.isArray(row.providers)
+                  ? row.providers.join(', ')
+                  : String(row.providers ?? formattedValue ?? '-')
+                : formattedValue
             copyToClipboard(value)
           }}
         >
